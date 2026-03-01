@@ -102,6 +102,10 @@ PRODUCT_PACKAGES += \
     init.project.rc \
     ueventd.mt6835.rc
 
+PRODUCT_COPY_FILES += \
+    $(foreach f,$(shell find device/xiaomi/air/lib/modules -type f),\
+    $(f):$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules/$(notdir $(f)))
+
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
